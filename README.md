@@ -2,8 +2,8 @@
 <h1 align="center"> RSX-UM7 Orientation Sensor </h1> 
 <h4 align="right">April 24</h4>
 
-<img src="https://img.shields.io/badge/OS-Linux%20GNU-yellowgreen"><img src="https://img.shields.io/badge/OS-Windows%2011-blue">git <img src="https://img.shields.io/badge/Hardware-Raspberry%20ver%204-red"><img src="https://img.shields.io/badge/Hardware-Raspberry%203B%2B-red">
-<img src="https://img.shields.io/badge/Hardware-Raspberry%20Zero-red"><img src="https://img.shields.io/badge/Python%20-V3.9.2-orange">
+<img src="https://img.shields.io/badge/OS-Linux%20GNU-yellowgreen"> <img src="https://img.shields.io/badge/OS-Windows%2011-blue"> <img src="https://img.shields.io/badge/Hardware-Raspberry%20ver%204-red"> <img src="https://img.shields.io/badge/Hardware-Raspberry%203B%2B-red">
+<img src="https://img.shields.io/badge/Hardware-Raspberry%20Zero-red"> <img src="https://img.shields.io/badge/Python%20-V3.9.2-orange">
 
 <br>
 
