@@ -17,6 +17,12 @@ El sensor de orientación UM7 es un sistema de referencia de actitud y rumbo (AH
 El UM7 se conecta al software de interfaz de serie para permitir el trazado en tiempo real de los datos del sensor, el registro, la configuración del dispositivo y la calibración del magnetómetro.
 Si no es necesario medir el ángulo de yaw, generalmente no es necesario calibrar el magnetómetro. Sin embargo, si el UM7 está funcionando en modo cuaternión, siempre se requiere la calibración del magnetómetro para un funcionamiento correcto
 
+# PinOut
+
+<p align="center"><img src="./img/pinout.png" width="600"  alt=" " /></p>
+
+> :memo: **Note:** Si se usa FTDI el Tx UM7 --> Rx FTDI, Rx UM7 --> Tx FTDI
+
 <br>
 
 # Python Use
@@ -37,7 +43,10 @@ sudo apt install python3-pip
 ```python
 pip install rsl-comm-py
 ```
-Windows (usando FTDI convertidor)
+more info: https://github.com/RedshiftLabsPtyLtd/rsl_comm_py
+
+## Windows (usando FTDI convertidor)
+Reading the Euler angles broadcast packets. Conociendo el puerto COM desde el Adminitrador de dispositivo de Windows.
 ```python
 from rsl_comm_py import UM7Serial
 um7_serial = UM7Serial(port_name='COM3')
@@ -46,7 +55,15 @@ for packet in um7_serial.recv_euler_broadcast():
 ```
 El puerto COM dependera de cual le asigne el sistema operativo. 
 
-linux (usando FTDI convertidor)
+<br>
+
+## Linux (usando FTDI convertidor)
+Reading the Euler angles broadcast packets. Para ver donde esta la IMU conectada USB
+```
+ls /dev/tty* | grep USB
+```
+La respuesta se algo como  ```/dev/ttyUSB*```
+
 ```python
 from rsl_comm_py import UM7Serial
 um7_serial = UM7Serial(port_name='/dev/ttyUSB0')
@@ -56,6 +73,31 @@ for packet in um7_serial.recv_euler_broadcast():
 > :memo: **Note:** En RPi si se conecta si el FTDI al bus serial el puerto puede cambiar ej: ```/dev/ttyS0```
 
 > :memo: **Note:** Es posible configurar el serial del dispositivo y conectarse al UM7 sin importar que puerto le asigne el OS.
+
+<p align="center"><img src="./img/output.jpg" width="1200"  alt=" " /></p>
+
+## Test 2
+Reading the raw sensor data broadcast packets
+```python
+from rsl_comm_py import UM7Serial
+um7_serial = UM7Serial(port_name='COM7')
+for packet in um7_serial.recv_all_raw_broadcast():
+    print(f"packet: {packet}")
+```
+
+<p align="center"><img src="./img/output3.png" width="1500"  alt=" " /></p>
+
+<br>
+
+Reading 100 processed sensor data broadcast packets
+```python
+from rsl_comm_py import UM7Serial
+um7_serial = UM7Serial(port_name='COM7')
+for packet in um7_serial.recv_all_proc_broadcast(num_packets=100):
+    print(f"packet: {packet}")
+```
+<p align="center"><img src="./img/output2.png" width="1500"  alt=" " /></p>
+
 
 <br>
 
