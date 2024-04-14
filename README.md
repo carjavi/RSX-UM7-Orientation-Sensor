@@ -36,8 +36,8 @@ sudo apt install python3-pip
 ```
 
 ## Testing
-```python
-pip install rsl-comm-py
+```
+sudo pip install rsl-comm-py
 ```
 more info: https://github.com/RedshiftLabsPtyLtd/rsl_comm_py
 
@@ -135,6 +135,13 @@ print(f"Pitch: {pitch}, Roll: {roll}, Yaw: {yaw}")
 # Demo UM7
 demo-UM7.py draw rotating cube using OpenGL using euler angle representation received over serial port.
 
+## Install Library
+```
+sudo pip install rsl-comm-py
+sudo pip install pygame
+sudo pip install pyopengl
+```
+demo-UM7.py:
 ```python
 """
 Author  carjavi <carjavi@hotmail.com>
@@ -292,7 +299,12 @@ if __name__ == '__main__':
 
 ```
 <br>
+euler angle:
+<p align="center"><img src="./img/euler-angle.webp" width="800"  alt=" " /></p>
 
+<br>
+
+Testing demo-UM7.py:
 <p align="center"><img src="./img/demo_UM7.png" width="800"  alt=" " /></p>
 
 
