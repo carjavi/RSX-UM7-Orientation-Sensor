@@ -15,7 +15,7 @@ from pygame.locals import *
 
 # Libreria del UM7
 from rsl_comm_py import UM7Serial
-um7_serial = UM7Serial(port_name='COM7')
+um7_serial = UM7Serial(port_name='COM7') # /dev/ttyUSB*  /dev/ttyS*  COM*
 
 
 
