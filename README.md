@@ -300,12 +300,12 @@ if __name__ == '__main__':
 ```
 <br>
 euler angle:
-<p align="center"><img src="./img/euler-angle.webp" width="800"  alt=" " /></p>
+<p align="center"><img src="./img/euler-angle.webp" width="500"  alt=" " /></p>
 
 <br>
 
 Testing demo-UM7.py:
-<p align="center"><img src="./img/demo_UM7.png" width="800"  alt=" " /></p>
+<p align="center"><img src="./img/demo_UM7.png" width="500"  alt=" " /></p>
 
 
 <br>
