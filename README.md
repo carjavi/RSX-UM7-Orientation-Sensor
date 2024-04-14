@@ -19,6 +19,8 @@ Si no es necesario medir el ángulo de yaw, generalmente no es necesario calibra
 
 > :memo: **Note:** Si se usa FTDI el Tx UM7 --> Rx FTDI, Rx UM7 --> Tx FTDI
 
+> :bulb: **Tip:** Es posible configurar el ID del dispositivo y conectarse al UM7 sin importar que puerto le asigne el OS. More info: https://github.com/RedshiftLabsPtyLtd/rsl_comm_py
+
 <br>
 
 # Testing on Python 
@@ -36,13 +38,18 @@ sudo apt install python3-pip
 ```
 
 ## Testing
+libreria utilizada:
 ```
 sudo pip install rsl-comm-py
 ```
 more info: https://github.com/RedshiftLabsPtyLtd/rsl_comm_py
 
+<br>
+
 ## Windows (usando FTDI convertidor)
 Reading the Euler angles broadcast packets. Conociendo el puerto COM desde el Adminitrador de dispositivo de Windows.
+
+UM7-win.py:
 ```python
 from rsl_comm_py import UM7Serial
 um7_serial = UM7Serial(port_name='COM3')
@@ -53,22 +60,53 @@ El puerto COM dependera de cual le asigne el sistema operativo.
 
 <br>
 
-## Linux (usando FTDI convertidor)
+## Linux 
+### Usando FTDI convertidor (UART/USB)
 Reading the Euler angles broadcast packets. Para ver donde esta la IMU conectada USB
 ```
 ls /dev/tty* | grep USB
 ```
 La respuesta se algo como  ```/dev/ttyUSB*```
 
+UM7-linux.py:
 ```python
 from rsl_comm_py import UM7Serial
 um7_serial = UM7Serial(port_name='/dev/ttyUSB0')
 for packet in um7_serial.recv_euler_broadcast():
     print(f"packet: {packet}")
 ```
-> :memo: **Note:** En RPi si se conecta si el FTDI al bus serial el puerto puede cambiar ej: ```/dev/ttyS0```
 
-> :memo: **Note:** Es posible configurar el serial del dispositivo y conectarse al UM7 sin importar que puerto le asigne el OS.
+<br>
+
+### Usando el puerto Serial de la RPi (UART)
+hay que habilitar puerto desde:
+```
+sudo raspi-config
+```
+Nos dirigiremos a la opcion 5 de opciones de interfaz, posteriormente inhabilitaremos el login Shell, pero mantendremos habilitado el Hardware de la UART, Con esto cuando inicie la RPi no enviara datos por la UART.
+
+<p align="center"><img src="./img/configuracion-1.png" width="700"  alt=" " /></p>
+<p align="center"><img src="./img/configuracion-2.png" width="700"  alt=" " /></p>
+<p align="center"><img src="./img/configuracion-3.png" width="700"  alt=" " /></p>
+<p align="center"><img src="./img/configuracion-4.png" width="700"  alt=" " /></p>
+<p align="center"><img src="./img/configuracion-5.png" width="700"  alt=" " /></p>
+
+
+ver los puertos seriales conectados
+```
+dmesg | grep tty
+```
+el puerto determinado deberia ser: ```/dev/ttyS0``` o ```/dev/ttyAMA0```
+
+<br>
+
+UM7-linux.py:
+```python
+from rsl_comm_py import UM7Serial
+um7_serial = UM7Serial(port_name='/dev/ttyS0') # /dev/ttyAMA0
+for packet in um7_serial.recv_euler_broadcast():
+    print(f"packet: {packet}")
+```
 
 <p align="center"><img src="./img/output.jpg" width="1200"  alt=" " /></p>
 
@@ -134,6 +172,8 @@ print(f"Pitch: {pitch}, Roll: {roll}, Yaw: {yaw}")
 
 # Demo UM7
 demo-UM7.py draw rotating cube using OpenGL using euler angle representation received over serial port.
+
+> :warning: **Warning:** Para que funcione en una RPi debe tener la GUI habilitada, en una versión ```Server``` o ```Lite``` no funcionara.
 
 ## Install Library
 ```
@@ -306,6 +346,14 @@ euler angle:
 
 Testing demo-UM7.py:
 <p align="center"><img src="./img/demo_UM7.png" width="500"  alt=" " /></p>
+
+info OpenGL para modificar la GUI: https://docs.hektorprofe.net/opengl/07-renderizado-con-shaders/
+
+<br>
+
+# Calibración del magnetómetro
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
 <br>
