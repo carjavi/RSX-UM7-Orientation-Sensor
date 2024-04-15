@@ -110,7 +110,7 @@ for packet in um7_serial.recv_euler_broadcast():
 
 <p align="center"><img src="./img/output.jpg" width="1200"  alt=" " /></p>
 
-## Test 2
+## Otros Ejemplos
 Reading the raw sensor data broadcast packets
 ```python
 from rsl_comm_py import UM7Serial
@@ -351,9 +351,22 @@ info OpenGL para modificar la GUI: https://docs.hektorprofe.net/opengl/07-render
 
 <br>
 
-# Calibración del magnetómetro
+# Calibración / Testing / Setting from Windows
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+<p align="center"><img src="./img/um7-serial-setting.png" width="400"  alt=" " /></p>
+<p align="center"><img src="./img/um7-commands.png" width="400"  alt=" " /></p>
+<p align="center"><img src="./img/um7-data.png" width="400"  alt=" " /></p>
+<p align="center"><img src="./img/um7-configuration.png" width="400"  alt=" " /></p>
+<p align="center"><img src="./img/um7-mag-calibration.png" width="400"  alt=" " /></p>
+
+
+<br>
+
+# Um7 ROS
+
+<p align="center"><img src="./img/orientB.jpg" width="600"  alt=" " /></p>
+<p align="center"><img src="./img/um7-ros1.png" width="500"  alt=" " /></p>
+<p align="center"><img src="./img/um7-ros2.png" width="500"  alt=" " /></p>
 
 
 <br>
